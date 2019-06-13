@@ -7,6 +7,7 @@ class Create extends Component {
     super()
     this.state = {
       playlist: {},
+      submitted: false
     }
   }
 
@@ -21,7 +22,7 @@ class Create extends Component {
       body: JSON.stringify(postObject),
     })
       .then(res => res.json())
-      .then(data => this.setState({ playlist: data }))
+      .then(data => this.setState({ playlist: data, submitted: true }))
   }
 
   render() {
@@ -47,10 +48,18 @@ class Create extends Component {
             </Form>
           )}
         />
-        <Playlist {...this.state.playlist} />
+        {this.state.submitted && <Playlist {...this.state.playlist} /> }
       </div>
     )
   }
 }
 
 export default Create
+
+
+// colors:
+// arsenic #474448
+// darkPurple #2d232e
+// bone: e0ddcf
+// darkLiver: 534b52
+// isabelline: f1f0ea

@@ -40,27 +40,6 @@ class Index extends Component {
     return (
       <div>
         <Nav />
-        <Formik
-          initialValues={{
-            name: '',
-            theme: '',
-            url: '',
-            artist: '',
-            album: '',
-          }}
-          onSubmit={values => this.handleSubmitClick(values)}
-          render={() => (
-            <Form>
-              <Field type="text" name="name" placeholder="Playlist Name" />
-              <Field type="text" name="theme" placeholder="Playlist Theme" />
-              <Field type="text" name="url" placeholder="Spotify Url" />
-              <Field type="text" name="artist" placeholder="Artist/Band Name" />
-              <Field type="text" name="album" placeholder="Album Title" />
-              <button type="submit">Create Playlist</button>
-            </Form>
-          )}
-        />
-        <Playlist {...this.state.playlist} />
       </div>
     )
   }

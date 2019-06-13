@@ -6,7 +6,7 @@ import NavLink from './NavLink'
 const Nav = ({className}) => (
     <div className={className}>
         <NavLink destination="/playlists" text="View All Playlists" />
-        <NavLink destination="/" text="Create New Playlist" />
+        <NavLink destination="/create" text="Create New Playlist" />
     </div>
 )
 
