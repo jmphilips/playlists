@@ -7,7 +7,7 @@ class Create extends Component {
     super()
     this.state = {
       playlist: {},
-      submitted: false
+      submitted: false,
     }
   }
 
@@ -48,14 +48,13 @@ class Create extends Component {
             </Form>
           )}
         />
-        {this.state.submitted && <Playlist {...this.state.playlist} /> }
+        {this.state.submitted && <Playlist {...this.state.playlist} />}
       </div>
     )
   }
 }
 
 export default Create
-
 
 // colors:
 // arsenic #474448
