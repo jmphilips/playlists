@@ -109,8 +109,10 @@ var _jsxFileName = "/home/bender/workspace/playlist/components/Playlist.js";
 
 var Playlist = function Playlist(_ref) {
   var name = _ref.name,
-      theme = _ref.theme;
+      theme = _ref.theme,
+      id = _ref.id;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    key: id,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 2
@@ -128,7 +130,13 @@ var Playlist = function Playlist(_ref) {
       lineNumber: 4
     },
     __self: this
-  }, theme));
+  }, theme), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5
+    },
+    __self: this
+  }, id));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Playlist);
@@ -559,8 +567,6 @@ function (_Component) {
         artist: artist.value,
         album: album.value
       };
-      console.log(postObject);
-      console.log('fetching');
       fetch('http://localhost:3001/playlist', {
         method: 'POST',
         mode: 'cors',
@@ -577,8 +583,25 @@ function (_Component) {
       });
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "handleFetchClick", function () {
+      fetch('http://localhost:3001/playlist', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        return _this.setState({
+          playlists: data
+        });
+      });
+    });
+
     _this.state = {
-      playlist: {}
+      playlist: {},
+      playlists: []
     };
     return _this;
   }
@@ -591,7 +614,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 47
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
@@ -602,7 +625,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 48
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
@@ -613,7 +636,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 53
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
@@ -624,7 +647,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 58
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
@@ -635,7 +658,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 63
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
@@ -646,7 +669,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 68
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("button", {
@@ -654,16 +677,34 @@ function (_Component) {
         onClick: this.handleSubmitClick,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 73
         },
         __self: this
-      }, "Create Entry"), this.state.playlist && react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Playlist__WEBPACK_IMPORTED_MODULE_10__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.state.playlist, {
+      }, "Create Entry"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("button", {
+        type: "submit",
+        onClick: this.handleFetchClick,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42
+          lineNumber: 76
         },
         __self: this
-      })));
+      }, "Get Entries"), this.state.playlist && react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Playlist__WEBPACK_IMPORTED_MODULE_10__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.state.playlist, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 79
+        },
+        __self: this
+      })), this.state.playlists && this.state.playlists.map(function (playlist) {
+        return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Playlist__WEBPACK_IMPORTED_MODULE_10__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+          key: playlist.id
+        }, playlist, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 81
+          },
+          __self: this
+        }));
+      }));
     }
   }]);
 

@@ -6,6 +6,7 @@ class Index extends Component {
     super(props)
     this.state = {
       playlist: {},
+      playlists: [],
     }
   }
   handleSubmitClick = () => {
@@ -27,6 +28,18 @@ class Index extends Component {
     })
       .then(res => res.json())
       .then(data => this.setState({ playlist: data }))
+  }
+
+  handleFetchClick = () => {
+      fetch('http://localhost:3001/playlist', {
+          method: 'GET',
+          mode: 'cors',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(res => res.json())
+      .then(data => this.setState({playlists: data}))
   }
 
   render() {
@@ -60,7 +73,13 @@ class Index extends Component {
         <button type="submit" onClick={this.handleSubmitClick}>
           Create Entry
         </button>
+        <button type="submit" onClick={this.handleFetchClick}>
+            Get Entries
+        </button>
         {this.state.playlist && <Playlist {...this.state.playlist} />}
+        {this.state.playlists && this.state.playlists.map(playlist => {
+            return <Playlist key={playlist.id} {...playlist} />
+        })}
       </div>
     )
   }
