@@ -113,9 +113,11 @@ var _jsxFileName = "/home/bender/workspace/playlist/components/Playlist.js";
 var Playlist = function Playlist(_ref) {
   var name = _ref.name,
       theme = _ref.theme,
-      id = _ref.id;
+      id = _ref.id,
+      className = _ref.className;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     key: id,
+    className: className,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 4
@@ -142,7 +144,11 @@ var Playlist = function Playlist(_ref) {
   }, id));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Playlist);
+var StyledPlaylist = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(Playlist).withConfig({
+  displayName: "Playlist__StyledPlaylist",
+  componentId: "sc-1h8d2r9-0"
+})(["width:20rem;height:20rem;border:2px solid black;"]);
+/* harmony default export */ __webpack_exports__["default"] = (StyledPlaylist);
 
 /***/ }),
 
@@ -691,7 +697,7 @@ function (_Component) {
           lineNumber: 76
         },
         __self: this
-      }, "Get Entries"), this.state.playlist && react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Playlist__WEBPACK_IMPORTED_MODULE_10__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.state.playlist, {
+      }, "Get Entries"), this.state.playlist.length > 0 && react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Playlist__WEBPACK_IMPORTED_MODULE_10__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.state.playlist, {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 79

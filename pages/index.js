@@ -76,7 +76,7 @@ class Index extends Component {
         <button type="submit" onClick={this.handleFetchClick}>
             Get Entries
         </button>
-        {this.state.playlist && <Playlist {...this.state.playlist} />}
+        {(this.state.playlist.length > 0) && <Playlist {...this.state.playlist} />}
         {this.state.playlists && this.state.playlists.map(playlist => {
             return <Playlist key={playlist.id} {...playlist} />
         })}
