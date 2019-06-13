@@ -1,3 +1,5 @@
+import styled from 'styled-components'
+
 const Playlist = ({ name, theme, id }) => (
   <div key={id}>
     <h2>{name}</h2>
