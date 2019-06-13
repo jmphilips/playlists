@@ -2265,6 +2265,9 @@ function (_Document) {
         },
         __self: this
       }, "My page"), this.props.styleTags), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("body", {
+        style: {
+          backgroundColor: '#2D2D23'
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 30
