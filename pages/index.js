@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Playlist from '../components/Playlist'
+import Nav from '../components/Nav'
 
 class Index extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class Index extends Component {
   render() {
     return (
       <div>
+        <Nav />
         <input
           type="text"
           placeholder="Playlist name"
