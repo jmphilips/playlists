@@ -1120,6 +1120,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _components_Playlist__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/Playlist */ "./components/Playlist.js");
 /* harmony import */ var _components_Nav__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/Nav */ "./components/Nav.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! formik */ "formik");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(formik__WEBPACK_IMPORTED_MODULE_12__);
 
 
 
@@ -1130,6 +1132,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "/home/bender/workspace/playlist/pages/index.js";
+
 
 
 
@@ -1146,21 +1149,7 @@ function (_Component) {
 
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Index).call(this, props));
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "handleSubmitClick", function () {
-      var _assertThisInitialize = Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this),
-          name = _assertThisInitialize.name,
-          theme = _assertThisInitialize.theme,
-          url = _assertThisInitialize.url,
-          artist = _assertThisInitialize.artist,
-          album = _assertThisInitialize.album;
-
-      var postObject = {
-        name: name.value,
-        theme: theme.value,
-        url: url.value,
-        artist: artist.value,
-        album: album.value
-      };
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "handleSubmitClick", function (postObject) {
       fetch('http://localhost:3001/playlist', {
         method: 'POST',
         mode: 'cors',
@@ -1208,103 +1197,99 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 48
+          lineNumber: 41
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Nav__WEBPACK_IMPORTED_MODULE_11__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49
+          lineNumber: 42
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        type: "text",
-        placeholder: "Playlist name",
-        ref: function ref(input) {
-          return _this2.name = input;
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_12__["Formik"], {
+        initialValues: {
+          name: '',
+          theme: '',
+          url: '',
+          artist: '',
+          album: ''
+        },
+        onSubmit: function onSubmit(values) {
+          return _this2.handleSubmitClick(values);
+        },
+        render: function render() {
+          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_12__["Form"], {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 53
+            },
+            __self: this
+          }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_12__["Field"], {
+            type: "text",
+            name: "name",
+            placeholder: "Playlist Name",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 54
+            },
+            __self: this
+          }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_12__["Field"], {
+            type: "text",
+            name: "theme",
+            placeholder: "Playlist Theme",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 55
+            },
+            __self: this
+          }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_12__["Field"], {
+            type: "text",
+            name: "url",
+            placeholder: "Spotify Url",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 56
+            },
+            __self: this
+          }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_12__["Field"], {
+            type: "text",
+            name: "artist",
+            placeholder: "Artist/Band Name",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 57
+            },
+            __self: this
+          }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_12__["Field"], {
+            type: "text",
+            name: "album",
+            placeholder: "Album Title",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 58
+            },
+            __self: this
+          }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("button", {
+            type: "submit",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 59
+            },
+            __self: this
+          }, "Create Playlist"));
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50
+          lineNumber: 43
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        type: "text",
-        placeholder: "Playlist theme",
-        ref: function ref(input) {
-          return _this2.theme = input;
-        },
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Playlist__WEBPACK_IMPORTED_MODULE_10__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.state.playlist, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 63
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        type: "text",
-        placeholder: "Spotify url",
-        ref: function ref(input) {
-          return _this2.url = input;
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 60
-        },
-        __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        type: "text",
-        placeholder: "Artist/Band Name",
-        ref: function ref(input) {
-          return _this2.artist = input;
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 65
-        },
-        __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        type: "text",
-        placeholder: "Album Title",
-        ref: function ref(input) {
-          return _this2.album = input;
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 70
-        },
-        __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("button", {
-        type: "submit",
-        onClick: this.handleSubmitClick,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 75
-        },
-        __self: this
-      }, "Create Entry"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("button", {
-        type: "submit",
-        onClick: this.handleFetchClick,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 78
-        },
-        __self: this
-      }, "Get Entries"), this.state.playlist.length > 0 && react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Playlist__WEBPACK_IMPORTED_MODULE_10__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.state.playlist, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 81
-        },
-        __self: this
-      })), this.state.playlists && this.state.playlists.map(function (playlist) {
-        return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Playlist__WEBPACK_IMPORTED_MODULE_10__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-          key: playlist.id
-        }, playlist, {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 83
-          },
-          __self: this
-        }));
-      }));
+      })));
     }
   }]);
 
@@ -1412,6 +1397,17 @@ module.exports = require("core-js/library/fn/symbol");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/symbol/iterator");
+
+/***/ }),
+
+/***/ "formik":
+/*!*************************!*\
+  !*** external "formik" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("formik");
 
 /***/ }),
 

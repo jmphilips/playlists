@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Playlist from '../components/Playlist'
 import Nav from '../components/Nav'
+import { Formik, Field, Form } from 'formik'
 
 class Index extends Component {
   constructor(props) {
@@ -10,15 +11,7 @@ class Index extends Component {
       playlists: [],
     }
   }
-  handleSubmitClick = () => {
-    const { name, theme, url, artist, album } = this
-    const postObject = {
-      name: name.value,
-      theme: theme.value,
-      url: url.value,
-      artist: artist.value,
-      album: album.value,
-    }
+  handleSubmitClick = postObject => {
     fetch('http://localhost:3001/playlist', {
       method: 'POST',
       mode: 'cors',
@@ -32,56 +25,42 @@ class Index extends Component {
   }
 
   handleFetchClick = () => {
-      fetch('http://localhost:3001/playlist', {
-          method: 'GET',
-          mode: 'cors',
-          headers: {
-              'Content-Type': 'application/json'
-          }
-      })
+    fetch('http://localhost:3001/playlist', {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then(res => res.json())
-      .then(data => this.setState({playlists: data}))
+      .then(data => this.setState({ playlists: data }))
   }
 
   render() {
     return (
       <div>
         <Nav />
-        <input
-          type="text"
-          placeholder="Playlist name"
-          ref={input => (this.name = input)}
+        <Formik
+          initialValues={{
+            name: '',
+            theme: '',
+            url: '',
+            artist: '',
+            album: '',
+          }}
+          onSubmit={values => this.handleSubmitClick(values)}
+          render={() => (
+            <Form>
+              <Field type="text" name="name" placeholder="Playlist Name" />
+              <Field type="text" name="theme" placeholder="Playlist Theme" />
+              <Field type="text" name="url" placeholder="Spotify Url" />
+              <Field type="text" name="artist" placeholder="Artist/Band Name" />
+              <Field type="text" name="album" placeholder="Album Title" />
+              <button type="submit">Create Playlist</button>
+            </Form>
+          )}
         />
-        <input
-          type="text"
-          placeholder="Playlist theme"
-          ref={input => (this.theme = input)}
-        />
-        <input
-          type="text"
-          placeholder="Spotify url"
-          ref={input => (this.url = input)}
-        />
-        <input
-          type="text"
-          placeholder="Artist/Band Name"
-          ref={input => (this.artist = input)}
-        />
-        <input
-          type="text"
-          placeholder="Album Title"
-          ref={input => (this.album = input)}
-        />
-        <button type="submit" onClick={this.handleSubmitClick}>
-          Create Entry
-        </button>
-        <button type="submit" onClick={this.handleFetchClick}>
-            Get Entries
-        </button>
-        {(this.state.playlist.length > 0) && <Playlist {...this.state.playlist} />}
-        {this.state.playlists && this.state.playlists.map(playlist => {
-            return <Playlist key={playlist.id} {...playlist} />
-        })}
+        <Playlist {...this.state.playlist} />
       </div>
     )
   }
