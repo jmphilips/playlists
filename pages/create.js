@@ -1,32 +1,14 @@
-import { Formik, Field, Form } from 'formik'
 import React, { Component } from 'react'
+import { Formik, Form } from 'formik'
 import Playlist from '../components/Playlist'
 import styled from 'styled-components'
-
-const CustomField = ({className, text, placeholder, name}) => (
-    <Field className={className} text={text} placeholder={placeholder} name={name} />
-)
-
-const StyledField = styled(CustomField)`
-    border: 1px solid #534B52;
-    height: 2rem;
-    font-weight: 300;
-    background-color: F1F0EA;
-    width: 20rem;
-    margin: 1rem;
-`
-
-const StyledButton = styled.button`
-    border: 1px solid #534B52;
-    height: 2rem;
-    font-weight: 300;
-    text-align: center;
-`
+import FormField from '../components/FormField'
+import Button from '../components/Button'
 
 const Container = styled.div`
-    width: 20rem;
-    margin: auto;
-    height: 80%;
+  width: 30rem;
+  margin: auto;
+  height: 80%;
 `
 
 class Create extends Component {
@@ -66,12 +48,28 @@ class Create extends Component {
           onSubmit={values => this.handleSubmitClick(values)}
           render={() => (
             <Form>
-              <StyledField type="text" name="name" placeholder="Playlist Name" />
-              <StyledField type="text" name="theme" placeholder="Playlist Theme" />
-              <StyledField type="text" name="url" placeholder="Spotify Url" />
-              <StyledField type="text" name="artist" placeholder="Artist/Band" />
-              <StyledField type="text" name="albums" placeholder="Album" />
-              <StyledButton type="submit">Create Playlist</StyledButton>
+              <div style={{ textAlign: 'center' }}>
+                <FormField
+                  type="text"
+                  name="name"
+                  placeholder="Playlist Name"
+                />
+                <FormField
+                  type="text"
+                  name="theme"
+                  placeholder="Playlist Theme"
+                />
+                <FormField type="text" name="url" placeholder="Spotify Url" />
+                <FormField
+                  type="text"
+                  name="artist"
+                  placeholder="Artist/Band"
+                />
+                <FormField type="text" name="albums" placeholder="Album" />
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <Button type="submit">Create Playlist</Button>
+              </div>
             </Form>
           )}
         />
