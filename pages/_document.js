@@ -1,6 +1,7 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from 'styled-components'
+import Nav from '../components/Nav'
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -28,6 +29,7 @@ export default class MyDocument extends Document {
           {this.props.styleTags}
         </Head>
         <body style={{ backgroundColor: '#2D2D23' }}>
+          <Nav />
           <Main />
           <NextScript />
         </body>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Nav from '../components/Nav'
+import RandomPlaylist from '../components/RandomPlaylist';
 
 class Index extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <RandomPlaylist />
       </div>
     )
   }

@@ -16,10 +16,10 @@ class playlists extends Component {
 
   render() {
     return (
-      <p>
+      <div>
         {this.state.playlists.length > 0 &&
-          this.state.playlists.map(playlist => <Playlist {...playlist} />)}
-      </p>
+          this.state.playlists.map(playlist => <Playlist key={playlist.id} {...playlist} />)}
+      </div>
     )
   }
 }

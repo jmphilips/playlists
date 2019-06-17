@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Playlist = ({ name, theme, id, className }) => (
-  <div key={id} className={className}>
+  <div className={className}>
     <StyledH2>{name}</StyledH2>
     <p>{theme}</p>
   </div>
